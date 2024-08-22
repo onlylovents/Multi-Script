@@ -129,9 +129,9 @@ password required pam_permit.so' >/etc/pam.d/common-password && chmod +x /etc/pa
   #read -p " Select [ S / N ]: " tu_ip
   [[ "$pass_root" = "s" || "$pass_root" = "S" ]] && pass_root
   msgi -bar2
-  echo -e "\e[1;93m\a\a\a      SE PROCEDERA A INSTALAR LAS ACTULIZACIONES\n PERTINENTES DEL SISTEMA, ESTE PROCESO PUEDE TARDAR\n VARIOS MINUTOS Y PUEDE PEDIR ALGUNAS CONFIRMACIONES \e[0;37m"
+  echo -e "\e[1;93m\a\a\a      RELEVANT SYSTEM UPDATES WILL BE INSTALLED\n THIS PROCESS MAY TAKE SEVERAL MINUTES AND MAY ASK FOR SOME CONFIRMATIONS \e[0;37m"
   msgi -bar
-  read -t 120 -n 1 -rsp $'\e[1;97m           Preciona Enter Para continuar\n'
+  read -t 120 -n 1 -rsp $'\e[1;97m           Press Enter to continue\n'
   clear && clear
   apt update
   apt upgrade -y
