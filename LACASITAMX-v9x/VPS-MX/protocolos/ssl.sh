@@ -834,9 +834,9 @@ esac
 7)
 clear
 msg -bar
-msg -ama "	START STUNNEL\n	ESTA OPCION ES SOLO SI LLEGA A DETENER EL PUERTO"
+msg -ama "	START STUNNEL\n THIS OPTION IS ONLY IF YOU STOP THE PORT"
 msg -ama
-echo -ne " Desea Continuar? [S/N]: "; read seg
+echo -ne "Do you want to continue?? [S/N]: "; read seg
 [[ $seg = @(n|N) ]] && msg -bar && return
 clear
 	#systemctl start stunnel4 &>/dev/null
@@ -844,7 +844,7 @@ clear
 	systemctl restart stunnel4 &>/dev/null
 	systemctl restart stunnel &>/dev/null
 msg -bar
-msg -verd "	SERVICIOS STUNNEL REINICIADOS"
+msg -verd "	SSL SERVICES RESTARTED"
 msg -bar
 ;;
 8)
@@ -900,7 +900,7 @@ echo -ne "$(msg -azu "You want to schedule SSL Auto-Start [s/n]:") "
 9)
 clear
 msg -bar
-msg -ama "	CERTIFICADOS ALMACENADOS de Zerossl\n	QUIERES USAR EL CERTIFICADO DE ZEROSSL?\n  private.key certificate.crt ca_bundle.crt"
+msg -ama "	STORED Zerossl CERTIFICATES\n YOU WANT TO USE THE ZEROSSL CERTIFICATE?\n  private.key certificate.crt ca_bundle.crt"
 msg -ama
 echo -ne " Desea Continuar? [S/N]: "; read seg
 [[ $seg = @(n|N) ]] && msg -bar && return
@@ -912,7 +912,7 @@ cat private.key certificate.crt ca_bundle.crt > stunnel.pem
 	systemctl restart stunnel4 &>/dev/null
 	systemctl restart stunnel &>/dev/null
 msg -bar
-msg -verd "	CERTIFICADO ZEROSSL AGREGADO\n	SERVICIO SSL INICIADO"
+msg -verd "	ZEROSSL CERTIFICATE ADDED\n SSL SERVICE STARTED"
 msg -bar
 ;;
 esac
