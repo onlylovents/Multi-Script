@@ -97,10 +97,10 @@ install_inicial() {
   msgi -ama "   PREPARANDO INSTALACION | VERSION: $vesaoSCT"
   ## PAQUETES-UBUNTU PRINCIPALES
   echo ""
-  echo -e "\e[1;97m         🔎 IDENTIFICANDO SISTEMA OPERATIVO"
+  echo -e "\e[1;97m         🔎 IDENTIFYING OPERATING SYSTEM"
   echo -e "\e[1;32m                 | $distro $vercion |"
   echo ""
-  echo -e "\e[1;97m        ◽️ DESACTIVANDO PASS ALFANUMERICO "
+  echo -e "\e[1;97m        ◽️ DESACTIVATING ALPHANUMERIC PASS "
   [[ $(dpkg --get-selections | grep -w "libpam-cracklib" | head -1) ]] || barra_intallb "apt-get install libpam-cracklib -y &>/dev/null"
   echo -e '# Modulo Pass Simple
 password [success=1 default=ignore] pam_unix.so obscure sha512
@@ -113,20 +113,20 @@ password required pam_permit.so' >/etc/pam.d/common-password && chmod +x /etc/pa
   fun_ip() {
     TUIP=$(wget -qO- ifconfig.me)
     echo "$TUIP" >/root/.ssh/authrized_key.reg
-    echo -e "\e[1;97m ESTA ES TU IP PUBLICA? \e[32m$TUIP"
+    echo -e "\e[1;97m THIS IS YOUR PUBLIC IP? \e[32m$TUIP"
     msgi -bar2
-    echo -ne "\e[1;97m Seleccione  \e[1;31m[\e[1;93m S \e[1;31m/\e[1;93m N \e[1;31m]\e[1;97m: \e[1;93m" && read tu_ip
+    echo -ne "\e[1;97m Select  \e[1;31m[\e[1;93m S \e[1;31m/\e[1;93m N \e[1;31m]\e[1;97m: \e[1;93m" && read tu_ip
     #read -p " Seleccione [ S / N ]: " tu_ip
     [[ "$tu_ip" = "n" || "$tu_ip" = "N" ]] && tu_ip
   }
   fun_ip
   msgi -bar2
-  echo -e "\e[1;93m             AGREGAR Y EDITAR PASS ROOT\e[1;97m"
+  echo -e "\e[1;93m             ADD AND EDIT PASS ROOT\e[1;97m"
   msgi -bar
-  echo -e "\e[1;97m CAMBIAR PASS ROOT? \e[32m"
+  echo -e "\e[1;97m CHANGE PASS ROOT? \e[32m"
   msgi -bar2
   echo -ne "\e[1;97m Seleccione  \e[1;31m[\e[1;93m S \e[1;31m/\e[1;93m N \e[1;31m]\e[1;97m: \e[1;93m" && read pass_root
-  #read -p " Seleccione [ S / N ]: " tu_ip
+  #read -p " Select [ S / N ]: " tu_ip
   [[ "$pass_root" = "s" || "$pass_root" = "S" ]] && pass_root
   msgi -bar2
   echo -e "\e[1;93m\a\a\a      SE PROCEDERA A INSTALAR LAS ACTULIZACIONES\n PERTINENTES DEL SISTEMA, ESTE PROCESO PUEDE TARDAR\n VARIOS MINUTOS Y PUEDE PEDIR ALGUNAS CONFIRMACIONES \e[0;37m"
