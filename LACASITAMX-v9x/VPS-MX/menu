@@ -3,7 +3,7 @@
 ll="/usr/local/include/snaps" && [[ ! -d ${ll} ]] && exit
 clear
 [[ "$(whoami)" != "root" ]] && {
-echo -e "\033[1;33m[\033[1;31m| NO HAS INICIADO CORRECTAMENTE EL SCRIPT, DEVES INICIAR COMO USUARIO ROOT |\033[1;33m] \033[1;37mDEVES EJECUTAR EL SIGUIENTE COMANDO \033[1;33msudo -i\033[0m"
+echo -e "\033[1;33m[\033[1;31m| YOU HAVE NOT CORRECTLY STARTED THE SCRIPT, YOU MUST START AS A ROOT USER |\033[1;33m] \033[1;37mYOU MUST EXECUTE THE FOLLOWING COMMAND \033[1;33msudo -i\033[0m"
 exit 0
 }
 
@@ -359,8 +359,8 @@ crontab -r >/dev/null 2>&1
 	echo "* * * * * /etc/autostart"
 ) | crontab -
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma}
-   echo -e "${cor[2]}               ACTUALIZACION COMPLETA "
-   echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
+   echo -e "${cor[2]}               COMPLETE UPDATE "
+   echo -e "         MAIN COMMAND TO ENTER THE PANEL "
    echo -e "  \033[1;37m               sudo menu             \033[0;37m" && msg -bar2
 rm -rf $HOME/lista-arq
 else
@@ -699,7 +699,7 @@ clear
 clear 
 #msg -bar
 msg -tit
-msg -ama "          ¿ DESEA DESINSTALAR SCRIPT ?"
+msg -ama "          ¿ YOU WANT TO UNINSTALL SCRIPT ?"
 msg -bar
 echo -e " Esto borrara todos los archivos del scrip VPS_MX"
 msg -bar
@@ -728,7 +728,7 @@ sudo apt-get autoremove -y &>/dev/null
 horas(){
 #code by rufu99
 msg -bar
-echo -e "	\e[41mACTUALIZAR HORA LOCAL\e[0m"
+echo -e "	\e[41mUPDATE LOCAL TIME\e[0m"
 msg -bar
 	n=1
     for i in $(ls /usr/share/zoneinfo/America); do
