@@ -877,7 +877,7 @@ export -f fun_bar
 export -f lacasita
 lacasita
 	msg -bar
-echo -e "  	\e[97m\e[1;100mPROTOCOLOS\e[0m  		  \e[97m\e[41mHERRAMIENTAS\e[0m"
+echo -e "  	\e[97m\e[1;100mPROTOCOLOS\e[0m  		  \e[97m\e[41mTOOL\e[0m"
 msg -bar
  if [[ ! -e /etc/noty ]]; then
  noty="\e[1;91m[OFF]"
@@ -895,14 +895,14 @@ msg -bar
 echo -e "\e[1;93m[\e[92m1\e[93m]$(msg -verm2 "➛ ")$(msg -azu "BADVPN        ${inst[badvpn]}")  \e[1;93m[\e[92m15\e[93m]$(msg -verm2 "➛ ")$(msg -azu "ARCHIVO ONLINE")"
 echo -e "\e[1;93m[\e[92m2\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SOCKS LIBEV   ${inst[ss-server]}")  \e[1;93m[\e[92m16\e[93m]$(msg -verm2 "➛ ")$(msg -azu "FIREWALL")"
 echo -e "\e[1;93m[\e[92m3\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SOCKS PYTHON  ${inst[python]}")  \e[1;93m[\e[92m17\e[93m]$(msg -verm2 "➛ ")$(msg -azu "FAIL2BAN PROTECION")"
-echo -e "\e[1;93m[\e[92m4\e[93m]$(msg -verm2 "➛ ")$(msg -azu "V2RAY         ${inst[v2ray]}")  \e[1;93m[\e[92m18\e[93m]$(msg -verm2 "➛ ")$(msg -azu "DETALLES DE SISTEMA")"
+echo -e "\e[1;93m[\e[92m4\e[93m]$(msg -verm2 "➛ ")$(msg -azu "V2RAY         ${inst[v2ray]}")  \e[1;93m[\e[92m18\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SYSTEM DETAILS")"
 echo -e "\e[1;93m[\e[92m5\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SSL           ${inst[stunnel4]}")  \e[1;93m[\e[92m19\e[93m]$(msg -verm2 "➛ ")$(msg -azu "TCP (BBR|BBR-Plus)")"
 echo -e "\e[1;93m[\e[92m6\e[93m]$(msg -verm2 "➛ ")$(msg -azu "DROPBEAR      ${inst[dropbear]}")  \e[1;93m[\e[92m20\e[93m]$(msg -verm2 "➛ ")$(msg -azu "DNS NETFLIX")"
 echo -e "\e[1;93m[\e[92m7\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SQUID         ${inst[squid]}")  \e[1;93m[\e[92m21\e[93m]$(msg -verm2 "➛ ")$(msg -azu "AUTO MANTENIMIENTO")$autram"
 echo -e "\e[1;93m[\e[92m8\e[93m]$(msg -verm2 "➛ ")$(msg -azu "OPENVPN       ${inst[openvpn]}")  \e[1;93m[\e[92m22\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SCANNER SUBDOMINIO")"
-echo -e "\e[1;93m[\e[92m9\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SLOWDNS       ${inst[dns-serve]}")  \e[1;93m[\e[92m23\e[93m]$(msg -verm2 "➛ ")$(msg -azu "PRUEBA DE VELOCIDAD")"
+echo -e "\e[1;93m[\e[92m9\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SLOWDNS       ${inst[dns-serve]}")  \e[1;93m[\e[92m23\e[93m]$(msg -verm2 "➛ ")$(msg -azu "SPEED TEST")"
 echo -e "\e[1;93m[\e[92m10\e[93m]$(msg -verm2 "➛ ")$(msg -azu "MONITOR APP  $app")  \e[1;93m[\e[92m24\e[93m]$(msg -verm2 "➛ ")$(msg -azu "FIX ORACLE/AWS/AZR")"
-echo -e "\e[1;93m[\e[92m11\e[93m]$(msg -verm2 "➛ ")$(msg -azu "BOT TELEGRAM $AD")  \e[1;93m[\e[92m25\e[93m]$(msg -verm2 "➛ ")$(msg -azu "\e[91m\e[43mHERRAMIENTAS BASICOS\e[0m")"
+echo -e "\e[1;93m[\e[92m11\e[93m]$(msg -verm2 "➛ ")$(msg -azu "BOT TELEGRAM $AD")  \e[1;93m[\e[92m25\e[93m]$(msg -verm2 "➛ ")$(msg -azu "\e[91m\e[43mBASIC TOOLS\e[0m")"
 echo -e "\e[1;93m[\e[92m12\e[93m]$(msg -verm2 "➛ ")$(msg -azu "WIREGUARD    ${inst[wg]}")  $(msg -verd "[0] ")$(msg -verm2 "➛ ")$(msg -azu "⇚ VOLVER  ")" 
 echo -e "\e[1;93m[\e[92m13\e[93m]$(msg -verm2 "➛ ")$(msg -azu "NOTI-BOT     $noty")"
 echo -e "\e[1;93m[\e[92m14\e[93m]$(msg -verm2 "➛ ")$(msg -azu "CHECK-USER   $chek")"
@@ -1778,11 +1778,12 @@ on="\e[1;32m[ON]" && off="\e[1;31m[OFF]"
 echo -e " \e[1;93m[\e[92m1\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR")" 
 echo -e " \e[1;93m[\e[92m2\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | SS/SSRR")" 
 echo -e " \e[1;93m[\e[92m3\e[93m] $(msg -verm2 "➛ ") $(msg -azu "ADMINISTRAR CUENTAS | V2RAY --> $vra")"
-echo -e " \e[1;93m[\e[92m4\e[93m] $(msg -verm2 "➛ ") \e[1;31m\033[47mPROTOCOLOS\e[0m  \e[93m||  \e[1;37m\e[41mHERRAMIENTAS\e[0m"
+echo -e " \e[1;93m[\e[92m4\e[93m] $(msg -verm2 "➛ ") \e[1;31m\033[47mPROTOCOLOS\e[0m  \e[93m||  \e[1;37m\e[41mTOOLS\e[0m"
 echo -e " \e[1;93m[\e[92m5\e[93m] $(msg -verm2 "➛ ") $(msg -azu "MONITOR DE PROTOCOLOS --------> ${monitorserv}")"
 echo -e " \e[1;93m[\e[92m6\e[93m] $(msg -verm2 "➛ ") $(msg -azu "AUTO INICIAR SCRIPT ----------> $AutoRun ")"
 msg -bar
-echo -e " \e[1;93m[\e[92m7\e[93m] \e[97m$(msg -verm2 "➛ ") $(msg -verd "ACTUALIZAR") \e[1;93m [\e[92m8\e[93m]\e[97m$(msg -verm2 "➛ ")\033[1;31mDESINSTALAR  \e[1;93m[\e[92m0\e[93m]$(msg -verm2 "➛ ") $(msg -bra "\e[97m\033[1;41mSALIR")"
+echo -e " \e[1;93m[\e[92m7\e[93m] \e[97m$(msg -verm2 "➛ ") $(msg -verd "UPDATE") \e[1;93m [\e[92m8\e[93m]\e[97m$(msg -verm2 "➛ ")\033[1;31mUNINSTALL  \e[1;93m[\e[92m0\e[93m]$(msg -verm2 "➛ ") $(msg -bra "\e[97m\033[1;41m
+GO OUT")"
 msg -bar
 
 selection=$(selection_fun 13)
