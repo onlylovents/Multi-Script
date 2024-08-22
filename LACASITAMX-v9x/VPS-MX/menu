@@ -1397,20 +1397,20 @@ sysctl -w vm.drop_caches=3 &> /dev/null
   fi 
   clear
   msg -bar
-msg -ama "	  \e[1;97m\e[2;100mAUTO MANTENIMIENTO DE SISTEMA \e[0m"
+msg -ama "	  \e[1;97m\e[2;100mAUTO SYSTEM MAINTENANCE \e[0m"
 msg -bar 
-msg -verm2 " ➥ \e[97mACTUALIZACION DE PAQUETES       "
-msg -verm2 " ➥ \e[97mREFRESCAR RAM       "
-msg -verm2 " ➥ \e[97mREFRESCAR SWAP       "
-msg -verm2 " ➥ \e[97mLIMPIAR PAQUETES OPSOLETOS      "
-msg -verm2 " ➥ \e[97mLIMPIAR CACHE V2RAY      "
-msg -verm2 " ➥ \e[97mREINICIO DE SSL      "
+msg -verm2 " ➥ \e[97mPACKAGE UPDATE       "
+msg -verm2 " ➥ \e[97mREFRESH RAM       "
+msg -verm2 " ➥ \e[97mREFRESH SWAP       "
+msg -verm2 " ➥ \e[97mCLEAN OBSOLETE PACKAGES      "
+msg -verm2 " ➥ \e[97mCLEAR CACHE V2RAY      "
+msg -verm2 " ➥ \e[97mSSL RESET      "
 msg -bar
-  echo -ne "$(msg -azu "Desea programar El Auto-Limpieza [s/n]:") "
+  echo -ne "$(msg -azu "You want to schedule the Self-Cleaning [s/n]:") "
   read c_ram
   if [[ $c_ram = @(s|S|y|Y) ]]; then
     tput cuu1 && tput dl1
-    echo -ne "$(msg -azu " PONGA UN NÚMERO, EJEMPLO [1-12HORAS]:") "
+    echo -ne "$(msg -azu " PUT A NUMBER, EXAMPLE [1-12HORAS]:") "
     read ram_c
     if [[ $ram_c =~ ^[0-9]+$ ]]; then
       crontab -l > /root/cron
@@ -1422,10 +1422,10 @@ msg -bar
       service cron restart
       rm /root/cron
       tput cuu1 && tput dl1
-      msg -azu " Auto-Limpieza programada cada: $(msg -verd "${ram_c} HORAS")" && msg -bar && sleep 2
+      msg -azu " Self-Cleaning scheduled every: $(msg -verd "${ram_c} HOURS")" && msg -bar && sleep 2
     else
       tput cuu1 && tput dl1
-      msg -verm2 " ingresar solo numeros entre 1 y 12"
+      msg -verm2 " enter only numbers between 1 and 12"
       sleep 2
       msg -bar
     fi
