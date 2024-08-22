@@ -83,16 +83,16 @@ msg -tit
 			fi
 		done
 		tput cuu1 && tput dl1
-		msg -verm2 " ya existe un sub-dominio asociado a esta IP"
+		msg -verm2 " There is already a sub-domain associated with this IP"
 		msg -bar
-		echo -e " $(msg -ama "sub-dominio:") $(msg -verd "$domain")"
+		echo -e " $(msg -ama "sub-domain:") $(msg -verd "$domain")"
 		msg -bar
 		exit
     fi
 
     if [[ -z $name ]]; then
     	tput cuu1 && tput dl1
-		echo -e " $(msg -azu "El dominio principal es:") $(msg -verd "$_domain")\n $(msg -azu "El sub-dominio sera:") $(msg -verd "mivps.$_domain")"
+		echo -e " $(msg -azu "The main domain is:") $(msg -verd "$_domain")\n $(msg -azu "The sub-domain will be:") $(msg -verd "mivps.$_domain")"
 		msg -bar
     	while [[ -z "$name" ]]; do
     		msg -ne " Nombre (ejemplo: mivps)  "
@@ -206,17 +206,17 @@ fi
   #  read -p " enter para continuar"
     else
     	echo "" > /etc/VPS-MX/tmp/dominio.txt
-    	msg -ama " Falla al crear Sub-dominio!" 	
+    	msg -ama " Failed to create Sub-domain!" 	
     fi
  
 }
 ssl_stunel () {
 [[ $(mportas|grep stunnel4|head -1) ]] && {
-echo -e "\033[1;33m $(fun_trans  "Deteniendo Stunnel")"
+echo -e "\033[1;33m $(fun_trans  "Stopping Stunnel")"
 msg -bar
 service stunnel4 stop > /dev/null 2>&1
 service stunnel stop &>/dev/null
-apt-get purge stunnel4 -y &>/dev/null && echo -e "\e[31m DETENIENDO SERVICIO SSL" | pv -qL10
+apt-get purge stunnel4 -y &>/dev/null && echo -e "\e[31m STOPPING SSL SERVICE" | pv -qL10
 apt-get purge stunnel -y &>/dev/null
 
 if [[ ! -z $(crontab -l|grep -w "onssl.sh") ]]; then
@@ -226,14 +226,14 @@ rm -rf /tmp/st
 fi #saltando
 
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "Detenido Con Exito!")"
+echo -e "\033[1;33m $(fun_trans  "Successfully Arrested!")"
 msg -bar
 return 0
 }
 clear
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "Seleccione una puerta de redirección interna.")"
-echo -e "\033[1;33m $(fun_trans  "Un puerto SSH/DROPBEAR/SQUID/OPENVPN/PYTHON")"
+echo -e "\033[1;33m $(fun_trans  "Select an internal redirection PORT.")"
+echo -e "\033[1;33m $(fun_trans  "One SSH/DROPBEAR/SQUID/OPENVPN/PYTHON port")"
 msg -bar
          while true; do
          echo -ne "\033[1;37m"
@@ -241,36 +241,36 @@ msg -bar
 		 echo ""
          if [[ ! -z $redir ]]; then
              if [[ $(echo $redir|grep [0-9]) ]]; then
-                [[ $(mportas|grep $redir|head -1) ]] && break || echo -e "\033[1;31m $(fun_trans  "Puerto Invalido")"
+                [[ $(mportas|grep $redir|head -1) ]] && break || echo -e "\033[1;31m $(fun_trans  "Port Invalid")"
              fi
          fi
          done
 msg -bar
 DPORT="$(mportas|grep $redir|awk '{print $2}'|head -1)"
-echo -e "\033[1;33m $(fun_trans  "Ahora Que Puerto sera SSL")"
+echo -e "\033[1;33m $(fun_trans  "Now which port will be SSL")"
 msg -bar
     while true; do
 	echo -ne "\033[1;37m"
     read -p " Puerto SSL: " SSLPORT
 	echo ""
     [[ $(mportas|grep -w "$SSLPORT") ]] || break
-    echo -e "\033[1;33m $(fun_trans  "Esta puerta está en uso")"
+    echo -e "\033[1;33m $(fun_trans  "This port is in use")"
     unset SSLPORT
     done
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "Instalando SSL")"
+echo -e "\033[1;33m $(fun_trans  "Installing SSL")"
 msg -bar
 inst(){
 apt-get install stunnel -y
 apt-get install stunnel4 -y
 }
-inst &>/dev/null && echo -e "\e[1;92m INICIANDO SSL" | pv -qL10
+inst &>/dev/null && echo -e "\e[1;92m STARTING SSL" | pv -qL10
 #echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = ${SSLPORT}\nconnect = 127.0.0.1:${DPORT}" > /etc/stunnel/stunnel.conf
 echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\ndelay = yes\nciphers = ALL\nsslVersion = ALL\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:${DPORT}\naccept = ${SSLPORT}" > /etc/stunnel/stunnel.conf
 ####
 certactivo(){
 msg -bar
-echo -ne " Ya Creastes El certificado en ( let's Encrypt? o en Zero SSL? )\n Si Aun No Lo Instala Por Favor Precione N [S/N]: "; read seg
+echo -ne " Ya Creastes El certificado en ( let's Encrypt? o en Zero SSL? )\n If You Have Not Installed It Yet Please Click N [S/N]: "; read seg
 		[[ $seg = @(n|N) ]] && msg -bar && crearcert
 db="$(ls ${tmp_crt})"
   #  opcion="n"
@@ -278,7 +278,7 @@ db="$(ls ${tmp_crt})"
         cert=$(echo "$db"|grep ".crt")
         key=$(echo "$db"|grep ".key")
         msg -bar
-        msg -azu "CERTIFICADO SSL ENCONTRADO"
+        msg -azu "SSL CERTIFICATE FOUND"
         msg -bar
         echo -e "$(msg -azu "CERT:") $(msg -ama "$cert")"
         echo -e "$(msg -azu "KEY:")  $(msg -ama "$key")"
@@ -295,7 +295,7 @@ db="$(ls ${tmp_crt})"
 	systemctl restart stunnel &>/dev/null
 	
 	msg -bar
-	echo -e "\033[1;33m $(fun_trans  "CERTIFICADO INSTALADO CON EXITO")"
+	echo -e "\033[1;33m $(fun_trans  "CERTIFICATE SUCCESSFULLY INSTALLED")"
 	msg -bar
 
 	rm -rf ${tmp_crt}/stunnel.crt > /dev/null 2>&1
@@ -317,7 +317,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 	systemctl restart stunnel &>/dev/null
 
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "SSL INSTALADO CON EXITO")"
+echo -e "\033[1;33m $(fun_trans  "SSL SUCCESSFULLY INSTALLED")"
 msg -bar
 
 rm -rf /root/stunnel.crt > /dev/null 2>&1
@@ -326,10 +326,10 @@ return 0
 }
 clear
 msg -tit
-echo -e "$(msg -verd "[1]")$(msg -verm2 "➛ ")$(msg -azu "CERIFICADO SSL STUNNEL4 ")"
-echo -e "$(msg -verd "[2]")$(msg -verm2 "➛ ")$(msg -azu "Certificado Existen de Zero ssl | Let's Encrypt")"
+echo -e "$(msg -verd "[1]")$(msg -verm2 "➛ ")$(msg -azu "CERIFICATE SSL STUNNEL4 ")"
+echo -e "$(msg -verd "[2]")$(msg -verm2 "➛ ")$(msg -azu "Certificate Exists of Zero ssl | Let's Encrypt")"
 msg -bar
-echo -ne "\033[1;37mSelecione Una Opcion: "
+echo -ne "\033[1;37mSelect an option: "
 read opcao
 case $opcao in
 1)crearcert ;;
@@ -338,10 +338,10 @@ esac
 }
 SPR &
 ssl_stunel_2 () {
-echo -e "\033[1;32m $(fun_trans  "             AGREGAR MAS PUERTOS SSL")"
+echo -e "\033[1;32m $(fun_trans  "             ADD MORE PORTS SSL")"
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "Seleccione una puerta de redirección interna.")"
-echo -e "\033[1;33m $(fun_trans  "Un puerto SSH/DROPBEAR/SQUID/OPENVPN/SSL")"
+echo -e "\033[1;33m $(fun_trans  "Select an internal redirection PORT.")"
+echo -e "\033[1;33m $(fun_trans  "a port SSH/DROPBEAR/SQUID/OPENVPN/SSL")"
 msg -bar
          while true; do
          echo -ne "\033[1;37m"
@@ -349,7 +349,7 @@ msg -bar
 		 echo ""
          if [[ ! -z $portx ]]; then
              if [[ $(echo $portx|grep [0-9]) ]]; then
-                [[ $(mportas|grep $portx|head -1) ]] && break || echo -e "\033[1;31m $(fun_trans  "Puerto Invalido")"
+                [[ $(mportas|grep $portx|head -1) ]] && break || echo -e "\033[1;31m $(fun_trans  "PORT INVALID")"
              fi
          fi
          done
