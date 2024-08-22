@@ -1,13 +1,13 @@
 
 ### 🎊 MULTI INSTALADOR DE SCRIPTS FREE SIN KEYS Y CODIGO OPEN
 ------------------------------------------------------------------
-<p dir="auto"><img src="https://raw.githubusercontent.com/NetVPS/Multi-Script/main/SCREEN-ALL/multi.PNG" alt="" width="500" height="408" /></p>
+<p dir="auto"><img src="https://raw.githubusercontent.com/onlylovents/Multi-Script/main/SCREEN-ALL/multi.PNG" alt="" width="500" height="408" /></p>
 <p dir="auto" style="text-align: center;"><strong>MULTI SCRIPT</strong></p>
 
 ------------------------------------------------------------------
 
 <p dir="auto" style="text-align: center;"><span style="text-decoration: underline;"><strong><em>Instalador</em></strong></span></p>
-<p dir="auto"><em>rm -rf install.sh; apt update; apt upgrade -y; wget&nbsp;<a href="https://raw.githubusercontent.com/NetVPS/Multi-Script/main/0-Instalador/install.sh" rel="nofollow">https://raw.githubusercontent.com/NetVPS/Multi-Script/main/0-Instalador/install.sh</a>; chmod 777 install.sh; ./install.sh --start</em></p>
+<p dir="auto"><em>rm -rf install.sh; apt update; apt upgrade -y; wget&nbsp;<a href="https://raw.githubusercontent.com/onlylovents/Multi-Script/main/0-Instalador/install.sh" rel="nofollow">https://raw.githubusercontent.com/onlylovents/Multi-Script/main/0-Instalador/install.sh</a>; chmod 777 install.sh; ./install.sh --start</em></p>
 
 ------------------------------------------------------------------
 
