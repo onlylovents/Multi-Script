@@ -797,14 +797,14 @@ clear && clear
 /bin/cp /etc/skel/.bashrc ~/
 /bin/cp /etc/skel/.bashrc /etc/bash.bashrc
 msgi -bar2
-echo -e " \e[5m\e[1;100m   =====>> ►►  MENU DE INSTALACION  ◄◄ <<=====   \e[1;37m"
+echo -e " \e[5m\e[1;100m   =====>> ►►  MENU INSTALLATION  ◄◄ <<=====   \e[1;37m"
 msgi -bar2
-#-- VERIFICAR VERSION
+#-- VERIFICATE VERSION
 v1=$(curl -sSL "https://raw.githubusercontent.com/onlylovents/Multi-Script/main/Vercion")
 echo "$v1" >/etc/version_instalacion
 v22=$(cat /etc/version_instalacion)
 vesaoSCT="\e[1;31m [ \e[1;32m( $v22 )\e[1;97m\e[1;31m ]"
-msgi -ama "   PREPARANDO INSTALACION | VERSION: $vesaoSCT"
+msgi -ama "   PREPARE INSTALL | VERSION: $vesaoSCT"
 msgi -bar2
 echo -ne "\e[1;93m [\e[1;32m1\e[1;93m]\e[1;31m >\e[1;97m VPS-MX FINAL OFICIAL..(8.5)  \e[1;31m 🎁 FREE \e[97m \n"
 echo -ne "\e[1;93m [\e[1;32m2\e[1;93m]\e[1;31m >\e[1;97m SonNguyenVPS............(9X)   \e[1;31m 🎁 FREE \e[97m \n"
@@ -812,9 +812,9 @@ echo -ne "\e[1;93m [\e[1;32m3\e[1;93m]\e[1;31m >\e[1;97m ADMRufu                
 echo -ne "\e[1;93m [\e[1;32m4\e[1;93m]\e[1;31m >\e[1;97m ChumoGH...............(5.7u) \e[1;31m 🎁 FREE \e[97m \n"
 echo -ne "\e[1;93m [\e[1;32m5\e[1;93m]\e[1;31m >\e[1;97m LATAM.................(2.0)  \e[1;96m 💎 ACCESO VIP \e[97m \n"
 msgi -bar2
-echo -ne "\e[1;93m [\e[1;32m ARCHIVOS Y LINKS TOTALMENTE ABIERTOS Y PUBLICOS \e[1;93m]\e[1;96m\n       https://github.com/onlylovents/Multi-Script\e[97m \n"
+echo -ne "\e[1;93m [\e[1;32m FULLY OPEN AND PUBLIC FILES AND LINKS \e[1;93m]\e[1;96m\n       https://github.com/onlylovents/Multi-Script\e[97m \n"
 msgi -bar2
-echo -ne "\e[1;97mDigite solo el numero segun su respuesta:\e[32m "
+echo -ne "\e[1;97mEnter only the number according to your answer:\e[32m "
 read opcao
 case $opcao in
 1)
