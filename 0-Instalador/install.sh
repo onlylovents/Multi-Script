@@ -3,7 +3,7 @@
 clear && clear
 colores="$(pwd)/colores"
 rm -rf ${colores}
-wget -O ${colores} "https://raw.githubusercontent.com/NetVPS/Multi-Script/main/Otros/colores" &>/dev/null
+wget -O ${colores} "https://raw.githubusercontent.com/onlylovents/Multi-Script/main/Otros/colores" &>/dev/null
 [[ ! -e ${colores} ]] && exit
 chmod +x ${colores} &>/dev/null
 source ${colores}
@@ -30,7 +30,7 @@ os_system() {
   esac
 }
 repo() {
-  link="https://raw.githubusercontent.com/NetVPS/Multi-Script/main/Source-List/$1.list"
+  link="https://raw.githubusercontent.com/onlylovents/Multi-Script/main/Source-List/$1.list"
   case $1 in
   8 | 9 | 10 | 11 | 16.04 | 18.04 | 20.04 | 20.10 | 21.04 | 21.10 | 22.04) wget -O /etc/apt/sources.list ${link} &>/dev/null ;;
   esac
