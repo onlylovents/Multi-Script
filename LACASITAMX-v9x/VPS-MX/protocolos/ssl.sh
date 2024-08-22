@@ -355,20 +355,20 @@ msg -bar
          done
 msg -bar
 DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
-echo -e "\033[1;33m $(fun_trans  "Ahora Que Puerto sera SSL")"
+echo -e "\033[1;33m $(fun_trans  "Now what port will it be SSL")"
 msg -bar
     while true; do
 	echo -ne "\033[1;37m"
     read -p " Listen-SSL: " SSLPORT
 	echo ""
     [[ $(mportas|grep -w "$SSLPORT") ]] || break
-    echo -e "\033[1;33m $(fun_trans  "Esta puerta está en uso")"
+    echo -e "\033[1;33m $(fun_trans  "This PORT is in use")"
     unset SSLPORT
     done
 msg -bar
-echo -e "\033[1;33m $(fun_trans  "Instalando SSL")"
+echo -e "\033[1;33m $(fun_trans  "Installing SSL")"
 msg -bar
-apt-get install stunnel4 -y &>/dev/null && echo -e "\e[1;92m INICIANDO SSL" | pv -qL10
+apt-get install stunnel4 -y &>/dev/null && echo -e "\e[1;92m STARTING SSL" | pv -qL10
 echo -e "client = no\n[stunnel+]\ncert = /etc/stunnel/stunnel.pem\naccept = ${SSLPORT}\nconnect = 127.0.0.1:${DPORT}" >> /etc/stunnel/stunnel.conf
 ######
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
@@ -378,7 +378,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 	systemctl restart stunnel4 &>/dev/null
 	systemctl restart stunnel &>/dev/null
 msg -bar
-echo -e "${cor[4]}            INSTALADO CON EXITO"
+echo -e "${cor[4]}            SUCCESSFULLY INSTALLED"
 msg -bar
 
 rm -rf /root/stunnel.crt > /dev/null 2>&1
@@ -404,7 +404,7 @@ install_python(){
  } 
  
  install_ssl(){  
- apt-get install stunnel4 -y &>/dev/null && echo -e "\033[1;97m Activando Servicios SSL ►443\n" | pv -qL 12
+ apt-get install stunnel4 -y &>/dev/null && echo -e "\033[1;97m Activating Services SSL ►443\n" | pv -qL 12
  
  apt-get install stunnel4 -y > /dev/null 2>&1 
  #echo -e "client = no\ncert = /etc/stunnel/stunnel.pem\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n[http]\naccept = 443\nconnect = $IP:80" >/etc/stunnel/stunnel.conf
@@ -426,7 +426,7 @@ openssl genrsa -out stunnel.key 2048 > /dev/null 2>&1
 install_python 
 install_ssl 
 msg -bar
-echo -e "${cor[4]}               INSTALACION COMPLETA"
+echo -e "${cor[4]}               COMPLETE INSTALLATION"
 msg -bar
 }
 l="/usr/local/lib/sped" && [[ ! -d ${l} ]] && exit
@@ -448,7 +448,7 @@ msg -bar
 			#rm -rf /etc/stunnel/certificado.zip private.key certificate.crt ca_bundle.crt &>/dev/null
 clear
 msg -bar
-msg -verd "LOS SERVICIOS SE HAN DETENIDO"
+msg -verd "SERVICES HAVE BEEN STOPPED"
 msg -bar
 }
 
@@ -457,13 +457,13 @@ certif(){
 if [ -f /etc/stunnel/stunnel.conf ]; then
 msg -bar
 msg -tit
-echo -e "\e[1;37m ACONTINUACION ES TENER LISTO EL LINK DEL CERTIFICADO.zip\n VERIFICADO EN ZEROSSL, DESCARGALO Y SUBELO\n EN TU GITHUB O DROPBOX"
+echo -e "\e[1;37m NEXT IS TO HAVE THE LINK OF THE VERIFIED CERTIFICATE.zip\n READY IN ZEROSSL, DOWNLOAD IT AND UPLOAD IT TO YOUR GITHUB OR DROPBOX"
 echo -ne " Desea Continuar? [S/N]: "; read seg
 [[ $seg = @(n|N) ]] && msg -bar && return
 clear
 ####Cerrificado ssl/tls#####
 msg -bar
-echo -e "\e[1;33m👇 LINK DEL CERTIFICADO.zip 👇           \n     \e[0m"
+echo -e "\e[1;33m👇 LINK THE CERTIFICATE.zip 👇           \n     \e[0m"
 echo -ne "\e[1;36m LINK\e[37m: \e[34m"
 #extraer certificado.zip
 read linkd
@@ -479,11 +479,11 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 	systemctl restart stunnel4 &>/dev/null
 	systemctl restart stunnel &>/dev/null
 msg -bar
-echo -e "${cor[4]} CERTIFICADO INSTALADO CON EXITO \e[0m" 
+echo -e "${cor[4]} CERTIFICATE SUCCESSFULLY INSTALLED \e[0m" 
 msg -bar
 else
 msg -bar
-echo -e "${cor[3]} SERVICIO SSL NO ESTÁ INSTALADO \e[0m"
+echo -e "${cor[3]} CERTIFICATE SUCCESSFULLY INSTALLED \e[0m"
 msg -bar
 fi
 }
@@ -514,7 +514,7 @@ clear
 msg -bar
 insapa2 &>/dev/null && echo -e " \e[1;33mAGREGANDO RECURSOS " | pv -qL 10
 msg -bar
-echo -e "\e[1;37m Verificar dominio \e[0m\n\n"
+echo -e "\e[1;37m VERIFIER DOMAIN \e[0m\n\n"
 echo -e "\e[1;37m TIENES QUE MODIFICAR EL ARCHIVO DESCARGADO\n EJEMPLO: 530DDCDC3 comodoca.com 7bac5e210\e[0m"
 msg -bar
 read -p " LLAVE > Nombre Del Archivo: " keyy
@@ -550,7 +550,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 }
 incertis &>/dev/null && echo -e " \e[1;33mEXTRAYENDO CERTIFICADO " | pv -qL 10
 msg -bar
-echo -e "${cor[4]} CERTIFICADO INSTALADO \e[0m" 
+echo -e "${cor[4]} INSTALLED CERTIFICATE \e[0m" 
 msg -bar
 
 for pid in $(pgrep apache2);do
@@ -589,7 +589,7 @@ fi
 #
 stop_port(){
 	msg -bar
-	msg -ama " Comprovando puertos..."
+	msg -ama " Checking ports..."
 	ports=('80' '443')
 
 	for i in ${ports[@]}; do
@@ -600,12 +600,12 @@ stop_port(){
 			sleep 1s
 			if [[ 0 -ne $(lsof -i:$i | grep -i -c "listen") ]];then
 				tput cuu1 && tput dl1
-				msg -verm2 "ERROR AL LIBERAR PURTO $i"
+				msg -verm2 "PORT RELEASE ERROR $i"
 				msg -bar
-				msg -ama " Puerto $i en uso."
-				msg -ama " auto-liberacion fallida"
-				msg -ama " detenga el puerto $i manualmente"
-				msg -ama " e intentar nuevamente..."
+				msg -ama " PORT $i IN USE."
+				msg -ama " failed self-release"
+				msg -ama " failed $i self-release"
+				msg -ama " and try again..."
 				msg -bar
 				
 				return 1			
@@ -762,22 +762,22 @@ clear
 msg -bar3
 msg -tit
 msg -bar
-echo -e "       \e[91m\e[43mINSTALADOR MULTI SSL\e[0m "
+echo -e "       \e[91m\e[43mINSTALLER MULTI SSL\e[0m "
 msg -bar
-echo -e "$(msg -verd "[1]")$(msg -verm2 "➛ ")$(msg -azu "INICIAR |DETENER SSL") $stunel4"
-echo -e "$(msg -verd "[2]")$(msg -verm2 "➛ ")$(msg -azu "AGREGAR + PUERTOS SSL")"
+echo -e "$(msg -verd "[1]")$(msg -verm2 "➛ ")$(msg -azu "START |STOP SSL") $stunel4"
+echo -e "$(msg -verd "[2]")$(msg -verm2 "➛ ")$(msg -azu "ADD + SSL PORTS")"
 msg -bar
 echo -e "$(msg -verd "[3]")$(msg -verm2 "➛ ")$(msg -azu "SSL+Websocket Auto-Config 80➮443    ")"
-echo -e "$(msg -verd "[4]")$(msg -verm2 "➛ ")$(msg -azu "\e[1;31mDETENER SERVICIO SSL+Websocket  ")"
+echo -e "$(msg -verd "[4]")$(msg -verm2 "➛ ")$(msg -azu "\e[1;31mSTOP SERVICE SSL+Websocket  ")"
 msg -bar
-echo -e "$(msg -verd "[5]")$(msg -verm2 "➛ ")$(msg -azu "CREAR SUBDOMINIO") \e[1;92m( Nuevo )"
+echo -e "$(msg -verd "[5]")$(msg -verm2 "➛ ")$(msg -azu "CREATE SUBDOMAIN") \e[1;92m( Nuevo )"
 msg -bar
-echo -e "$(msg -verd "[6]")$(msg -verm2 "➛ ")$(msg -azu "CERTIFICADO SSL/TLS")"
-echo -e "$(msg -verd "[7]")$(msg -verm2 "➛ ")$(msg -azu "ENCENDER SSL")"
-echo -e "$(msg -verd "[8]")$(msg -verm2 "➛ ")$(msg -azu "AUTO-MANTENIMIENTO SSL") $ons"
+echo -e "$(msg -verd "[6]")$(msg -verm2 "➛ ")$(msg -azu "CERTIFICATE SSL/TLS")"
+echo -e "$(msg -verd "[7]")$(msg -verm2 "➛ ")$(msg -azu "TURN ON SSL")"
+echo -e "$(msg -verd "[8]")$(msg -verm2 "➛ ")$(msg -azu "AUTO-MAINTAIN SSL") $ons"
 [[ -e /etc/stunnel/private.key ]] && echo -e "$(msg -verd "[9]")$(msg -verm2 "➛ ")$(msg -azu "Usar Certificado Zerossl")"
 msg -bar
-echo -ne "\033[1;37mSelecione Una Opcion: "
+echo -ne "\033[1;37mSelect an option: "
 read opcao
 case $opcao in
 1)
