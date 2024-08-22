@@ -868,13 +868,13 @@ if [[ ! -z $(crontab -l|grep -w "onssl.sh") ]]; then
   fi 
   clear
   msg -bar
-msg -ama "	  \e[1;97m\e[2;100mAUTO-INICIAR SSL \e[0m"
+msg -ama "	  \e[1;97m\e[2;100mAUTO-START SSL \e[0m"
 msg -bar 
-echo -ne "$(msg -azu "Desea programar El Auto-Inicio SSL [s/n]:") "
+echo -ne "$(msg -azu "You want to schedule SSL Auto-Start [s/n]:") "
   read initio
   if [[ $initio = @(s|S|y|Y) ]]; then
     tput cuu1 && tput dl1
-    echo -ne "$(msg -azu " PONGA UN NÚMERO, EJEMPLO [1-12HORAS]:") "
+    echo -ne "$(msg -azu " PUT A NUMBER, EXAMPLE [1-12HOURS]:") "
     read initio
     if [[ $initio =~ ^[0-9]+$ ]]; then
       crontab -l > /root/cron
@@ -887,10 +887,10 @@ echo -ne "$(msg -azu "Desea programar El Auto-Inicio SSL [s/n]:") "
       service cron restart
       rm /root/cron
       tput cuu1 && tput dl1
-      msg -azu " Auto-Limpieza programada cada: $(msg -verd "${initio} HORAS")" && msg -bar && sleep 2
+      msg -azu " Self-Cleaning scheduled every: $(msg -verd "${initio} HOURS")" && msg -bar && sleep 2
     else
       tput cuu1 && tput dl1
-      msg -verm2 " ingresar solo numeros entre 1 y 12"
+      msg -verm2 " enter only numbers between 1 and 12"
       sleep 2
       msg -bar
     fi
