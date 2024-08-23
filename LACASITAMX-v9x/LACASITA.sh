@@ -2,7 +2,7 @@
 clear
 if [ `whoami` != 'root' ]
 	then 
-     echo -e "\e[1;31mPARA PODER USAR EL INSTALADOR ES NECESARIO SER ROOT\nAUN NO SABES COMO INICAR COMO ROOT?\nDIJITA ESTE COMANDO EN TU TERMINAL ( sudo -i )\e[0m" 
+     echo -e "\e[1;31mTO BE ABLE TO USE THE INSTALLER YOU NEED TO BE ROOT\nDO YOU STILL DON'T KNOW HOW TO START AS ROOT?\nSAY THIS COMMAND IN YOUR TERMINAL ( sudo -i )\e[0m" 
      rm *
      exit 
 fi
@@ -72,7 +72,7 @@ dependencias() {
 }
 
 msg -bar2
-echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT MOD LACASITAMX  ◄◄<<===== \033[0m"
+echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT TRANSLATED BY SON NGUYEN  ◄◄<<===== \033[0m"
 msg -bar2
 msg -ama "               PREPARANDO INSTALACION"
 msg -bar2
@@ -118,7 +118,7 @@ echo -e "\e[1;31m	🖥SISTEMA: \e[33m$distro $vercion   "
 echo -e "\e[1;31m	🖥IP: \e[33m$MI   "
 #apt list --upgradable &>/dev/null && echo -e "\033[97m    ❯ INSTALANDO APT-LIST " | pv -qL 50 |lolcat -as 500
 msg -bar2
-echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT MOD LACASITAMX  ◄◄<<===== \033[0m"
+echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT TRANSLATED BY SON NGUYEN  ◄◄<<===== \033[0m"
 msg -bar
 echo -e "\033[97m"
 echo -e "  \033[41m    -- INSTALACION DE PAQUETES  --    \e[49m"
@@ -303,7 +303,7 @@ msg -bar2
 #msg -ama "     [ VPS - MX - SCRIPT \033[1;97m MOD\033[1;33m ]"
 msg -bar2
 echo ""
-echo -e "\e[91m   INSTALACION SEMI MANUAL DE PAQUETES "
+echo -e "\e[91m   SEMI MANUAL PACKAGE INSTALLATION "
 echo -e "\e[91m(En caso de pedir confirmacion escoja: #y#) \e[0m"
 echo ""
 sleep 7s
@@ -356,17 +356,17 @@ fi
 clear
 rootvps(){
 
-echo -e "\033[31m     OPTENIENDO ACCESO ROOT    "
+echo -e "\033[31m     OBTAINING ROOT ACCESS    "
 wget https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SR/root.sh &>/dev/null -O /usr/bin/rootlx &>/dev/null
 chmod 775 /usr/bin/rootlx &>/dev/null
 rootlx
 clear
-echo -e "\033[31m     ACCESO ROOT CON ÉXITO    "
+echo -e "\033[31m     ROOT ACCESS SUCCESSFULLY    "
 sleep 1
 rm -rf /usr/bin/rootlx
 }
 	msg -bar
-	echo -e "\033[1;37m  YA TIENES ACCESO ROOT A TU VPS?\n  ESTO SOLO FUNCIONA PARA (AWS,GOOGLECLOUD,AZURE,ETC)\n  SI YA TIENES ACCESO A ROOT SOLO IGNORA ESTE MENSAJE\n  Y SIGUE CON LA INSTALACION NORMAL..."
+	echo -e "\033[1;37m  DO YOU ALREADY HAVE ROOT ACCESS TO YOUR VPS?\n THIS ONLY WORKS FOR (AWS,GOOGLECLOUD,AZURE,ETC)\n IF YOU ALREADY HAVE ROOT ACCESS JUST IGNORE THIS MESSAGE\n AND CONTINUE WITH THE NORMAL INSTALLATION..."
    msg -bar
    read -p "Responde [ s | n ]: " -e -i n rootvps
    [[ "$rootvps" = "s" || "$rootvps" = "S" ]] && rootvps
@@ -417,7 +417,7 @@ function_verify () {
   permited=$(curl -sSL "https://www.dropbox.com/s/nmau2w8vebewpq3/control")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
-  echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @CONECTEDMX_BOT \n————————————————————————————————————————————————————\n\n\n"
+  echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡THIS KEY DOES NOT MATCH WITH THE INSTALLER! \n      BOT: @CONECTEDMX_BOT \n————————————————————————————————————————————————————\n\n\n"
   [[ -d /etc/VPS-MX ]] && rm -rf /etc/VPS-MX
   exit 1
   } || {
@@ -576,7 +576,7 @@ wget -O /var/www/html/estilos.css https://raw.githubusercontent.com/lacasitamx/V
 [[ -f "/usr/sbin/ufw" ]] && ufw allow 443/tcp &>/dev/null; ufw allow 80/tcp &>/dev/null; ufw allow 3128/tcp &>/dev/null; ufw allow 8799/tcp &>/dev/null; ufw allow 8080/tcp &>/dev/null; ufw allow 81/tcp &>/dev/null
 clear
 msg -bar2
-echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT MOD LACASITAMX  ◄◄<<===== \033[0m"
+echo -e "   \e[1;97m\e[1;100m =====>>►►  SCRIPT TRANSLATED BY SON NGUYEN  ◄◄<<===== \033[0m"
 #msg -ama "  \033[1;96m      🔰Usar Ubuntu 20 a 64 De Preferencia🔰 "
 msg -bar2
 [[ $1 = "" ]] && funcao_idioma || {
@@ -586,7 +586,7 @@ msg -bar2
 error_fun () {
 
 echo ""
-msg -bar2 && msg -verm "ERROR DE GENERADOR | ARCHIVOS INCOMPLETOS\n	KEY USADA" && msg -bar2
+msg -bar2 && msg -verm "GENERATOR ERROR | INCOMPLETE FILES\n	KEY USADA" && msg -bar2
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
 [[ -e $HOME/lista-arq ]] && rm $HOME/lista-arq
 rm -rf lista-arq
@@ -603,7 +603,7 @@ exit 1
 
 
 while [[ ! $Key ]]; do
-msg -bar2 && msg -ne "\033[1;93m          >>> INGRESE SU KEY ABAJO <<<\n   \033[1;37m" && read Key
+msg -bar2 && msg -ne "\033[1;93m          >>> ENTER YOUR KEY BELOW <<<\n   \033[1;37m" && read Key
 tput cuu1 && tput dl1
 done
 msg -ne "    # Verificando Key # : "
@@ -708,7 +708,7 @@ fi
    [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}   
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma}
 
-#echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"
+#echo -e "${cor[2]}         YOU WANT TO INSTALL NOTI-BOT?(Default n)"
  #  echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @LaCasitaMx_Noty_Bot)"
   # msg -bar2
 #   read -p " [ s | n ]: " NOTIFY   
@@ -720,7 +720,7 @@ fi
    REBOOT=1
 REBOOT_TIMEOUT=10
 if [ "$REBOOT" = "1" ]; then
-echo -e "	\e[1;97m\e[1;100mREINICIANDO VPS EN 10 SEGUNDOS\e[0m"
+echo -e "	\e[1;97m\e[1;100mRESTARTING VPS IN 10 SECONDS\e[0m"
 while [ $REBOOT_TIMEOUT -gt 0 ]; do
 msg -ne "	-$REBOOT_TIMEOUT-\r"
 sleep 1
